@@ -9,8 +9,8 @@ const Home = ({navigation}) => {
   return (
     <View style={styles.container}> 
       <ScrollView style={styles.scrollView}>
-        <View>
-        <Text>HomeClean </Text>
+        <View style={styles.headLine}>
+        <Text style={styles.headLineText}>HomeClean</Text>
         </View>
      
       <View>
@@ -21,23 +21,15 @@ const Home = ({navigation}) => {
             />
       </View>
 
-      <View>
-       <h1>O jeito mais fácil e confiável de cuidar do seu lar</h1>
+       <View style={styles.containersubheadlineOne}>
+       <Text style={styles.subheadlineOne}> O jeito mais fácil e confiável de cuidar do seu lar</Text>
       </View>
 
-      <View>
-       <h2>Conheça todos os serviços de limpeza oferecidos pela HomeClean</h2>
+      <View style={styles.containersubheadlineTwo}>
+       <Text style={styles.subheadlineTwo}> Conheça todos os serviços de limpeza oferecidos pela HomeClean</Text>
       </View>
 
-      <View>
-        <Image
-        source={LogoOficial}
-        style={[styles.logo, { height: height * 0.3 }]}
-        resizeMode="contain"
-            />
-      </View>
-
-      <View>
+      <View style={styles.containerPadrao}>
         <Text>Limpeza Padrão</Text>
         <Text>Varrer e passar pano;</Text>
         <Text>Cozinha e banheiro completo;</Text>
@@ -45,15 +37,7 @@ const Home = ({navigation}) => {
         <Text>Limpeza de móveis e eletrônicos.</Text>
       </View>
 
-      <View>
-        <Image
-        source={LogoThree}
-        style={[styles.logo, { height: height * 0.3 }]}
-        resizeMode="contain"
-            />
-      </View>
-
-      <View>
+      <View style={styles.containerPesada}>
         <Text>Limpeza Pesada</Text>
         <Text>Inclui todos os itens da limpeza padrão</Text>
         <Text>Paredes, portas e rodapés;</Text>
@@ -75,7 +59,52 @@ const styles = StyleSheet.create({
 
   },
   scrollView: {
-    backgroundColor: '#f2f2'
+    backgroundColor: '#fff'
+  },
+  headLine: {
+    alignItems:'center'
+  },
+  headLineText: {
+    fontSize:40,
+    fontWeight: 900,
+    fontFamily: 'sans-serif'
+  },
+  containersubheadlineOne: {
+    alignItems:'center'
+  },
+  subheadlineOne:{
+    width: 388,
+    textAlign: 'center',
+    fontFamily: 'emoji',
+    fontSize: 25,
+    fontWeight: 400
+  },
+  containersubheadlineTwo: {
+    alignItems:'center'
+  },
+  subheadlineTwo: {
+    width: 388,
+    textAlign: 'center',
+    fontFamily: 'emoji',
+    fontSize: 25,
+    fontWeight: 400
+  },
+  containerPadrao: {
+    margin: '0 auto',
+    border: '1px solid #000',
+    borderRadius: 7,
+    height: 165,
+    width: 280,
+    left: 84
+  },
+  containerPesada:{
+    margin: '0 auto',
+    border: '1px solid #000',
+    borderRadius: 7,
+    height: 165,
+    width: 280,
+    left: 84,
+    bottom: -26
   }
 
 })
