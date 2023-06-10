@@ -44,26 +44,32 @@ const RegisterUser = ({ navigation }) => {
                 style={[styles.logo, { height: height * 0.3 }]}
                 resizeMode="contain"
             />
+            <View style={styles.cadastroBorda}> 
+            <View style={styles.subContainer}>
             <CustomInput
                 placeholder="Name"
                 value={name}
                 setValue={setName}
+                style={styles.cadastroInput}
             />
             <CustomInput
                 placeholder="Email"
                 value={email}
                 setValue={setEmail}
+                style={styles.cadastroInput}
             />
             <CustomInput
                 placeholder="Password"
                 value={password}
                 setValue={setPassword}
                 secureTextEntry={true}
+                style={styles.cadastroInput}
             />
             <CustomInput
                 placeholder="Admin"
                 value={admin}
                 setValue={setAdmin}
+                style={styles.cadastroInput}
             />
             <CustomButton text="Register" onPress={onRegisterPressed} />
             <TouchableOpacity
@@ -74,24 +80,47 @@ const RegisterUser = ({ navigation }) => {
                     <Text style={styles.loginText}>Faça o login</Text>
                 </Text>
             </TouchableOpacity>
+                </View>
+            </View>
         </View>
     )
 };
 
 const styles = StyleSheet.create({
     view: {
+        flex: 1,
         alignItems: 'center',
         padding: 20,
+        backgroundColor: '#7ed6d2'
     },
     logo: {
-        width: '70%',
+        width: '80%',
         maxWidth: 300,
         maxHeight: 200,
     },
     loginText: {
         fontWeight: "bold",
-        color: "#6200ee",
+        color: "#3b8183",
     },
+    cadastroBorda:{
+        border: '3px solid #deb0be',
+        width: 350,
+        top: 29,
+        alignItems: 'center',
+        height: 300,
+        gap: 6,
+        borderRadius: 8,
+        backgroundColor: '#deb0be'
+    },
+    cadastroInput:{
+       margin: 20,
+       width: 110,
+       left: -9
+    },
+    subContainer:{
+        top: 26
+        
+    }
 });
 
 export default RegisterUser;

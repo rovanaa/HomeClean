@@ -1,25 +1,26 @@
-import { StyleSheet, Text, View, Image, ScrollView, useWindowDimensions } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, useWindowDimensions } from 'react-native'
 import React from 'react';
 import LogoOficial from '../assets/images/logoOficial.jpeg';
 import LogoTwo from '../assets/images/LogoTwo.png';
-import ImagemPadrao from '../assets/images/ImagemPadrao.png';
-import ImagemPesada from '../assets/images/ImagemPesada.png';
+import ImagemPadrao from '../assets/images/ImagemPadrao.jpeg';
+import ImagemPesada from '../assets/images/ImagemPesada.jpeg';
 import ImagemBeneficio from '../assets/images/ImagemBeneficio.jpg';
-import LogoThree from '../assets/images/LogoThree.jpg';
+import LogoThree from '../assets/images/logoThree.jpg';
+import LogoWhatsapp from '../assets/images/LogoWhatsapp.jpeg';
 
 const Home = ({navigation}) => {
   const { height } = useWindowDimensions();
   return (
     <View style={styles.container}> 
       <ScrollView style={styles.scrollView}>
-      <View style={styles.headLine}>
+ <View style={styles.headLine}>
         <Text style={styles.headLineText}>HomeClean</Text>
         </View>
 
-        <View>
+        <View style={styles.containerImageOficial}>
         <Image
         source={LogoTwo}
-        style={[styles.logo, { height: height * 0.3 }]}
+        style={[styles.logoTwo, { height: height * 0.3 }]}
         resizeMode="contain"
             />
       </View>
@@ -33,10 +34,10 @@ const Home = ({navigation}) => {
       </View>
      <View style={styles.containerServicos}>
           <View tyle={styles.containerPadraoPesado}>
-            <View style={styles.subcontainerItemsBorda}>
+            <View style={styles.subcontainerItemsBordaPadrao}>
             <Image
               source={ImagemPadrao}
-              style={[styles.logo, { height: height * 0.3 }]}
+              style={styles.logoImage}
               resizeMode="contain"
                 />
             <Text style={styles.TextHeadlineServicos}>Limpeza Padrão</Text>
@@ -51,16 +52,16 @@ const Home = ({navigation}) => {
 
           <View style={styles.containerPadraoPesado}>
             <View style={styles.subcontainerItemsBordaPesado}>
-
+            <View style={styles.ImagemPesada}>
             <Image
               source={ImagemPesada}
-              style={[styles.logo, { height: height * 0.3 }]}
+              style={styles.logoImage}
               resizeMode="contain"
                 />
-
+            </View>
             <Text style={styles.TextHeadlineServicos}>Limpeza Pesada</Text>
-            <ul>
-              <li style={styles.TextItems}>Inclui todos os itens da limpeza padrão</li>
+            <ul style={styles.containerListPesado}>
+              <li style={styles.TextItems}>Inclui todos os itens da limpeza padrão;</li>
               <li style={styles.TextItems}>Paredes, portas e rodapés;</li>
               <li style={styles.TextItems}>Arrumação e organização;</li>
               <li style={styles.TextItems}>Janelas e interior dos móveis.</li>
@@ -77,7 +78,7 @@ const Home = ({navigation}) => {
 
            <Image
               source={ImagemBeneficio}
-              style={[styles.logo, { height: height * 0.3 }]}
+              style={styles.logoImage}
               resizeMode="contain"
                 />
 
@@ -101,7 +102,7 @@ const Home = ({navigation}) => {
 
             <Image
               source={LogoThree}
-              style={[styles.logo, { height: height * 0.3 }]}
+              style={styles.logoImage}
               resizeMode="contain"
                 />
 
@@ -114,9 +115,20 @@ const Home = ({navigation}) => {
             </ul>
             </View>
           </View>
-
+          <View style={styles.containerWhatsappTexto}>
           <View style={styles.containerWhatsapp}>
              <Text style={styles.whatsappText}> Tire suas dúvidas por whatsapp </Text>
+          </View>
+          <View>
+          <TouchableOpacity onPress={() => Linking.openURL('web.whatsapp.com')}>
+              <a href="https://web.whatsapp.com/" target="_blank">
+          <Image
+              source={LogoWhatsapp}
+              style={[styles.whatsappIcon, { height: height * 0.3 }]}
+              resizeMode="contain"/>
+              </a>
+          </TouchableOpacity>
+          </View>
           </View>
 
       </View>
@@ -129,12 +141,11 @@ const Home = ({navigation}) => {
 
 export default Home
 const styles = StyleSheet.create({
-  container: {
+   container: {
     flex: 1
-
   },
   scrollView: {
-    backgroundColor: '#fff'
+    backgroundColor: '#ffeaf1'
   },
   headLine: {
     alignItems:'center'
@@ -143,18 +154,25 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 900,
     fontFamily: 'system-ui',
-    width: 260
+    width: 260,
+    textAlign: 'center',
   },
   containersubheadlineOne: {
     alignItems:'center',
-    top: 7
+    top: 12,
+    border: '2px solid #3b8183',
+    width: 320,
+    left: 29,
+    backgroundColor: 'white',
+    height: 25,
+    alignItems: 'center'
   },
   subheadlineOne:{
     textAlign: 'center',
     fontFamily: 'system-ui',
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: 'bold',
-    color: 'rgb(30, 190, 165)'
+    color: '#000000'
   },
   containersubheadlineTwo: {
     alignItems:'center',
@@ -164,11 +182,11 @@ const styles = StyleSheet.create({
     width: 360,
     textAlign: 'center',
     fontSize: 18,
-    fontWeight: 300,
+    fontWeight: 500,
     fontFamily:'system-ui'
   },
   homeCleanNegrito:{
-    color: '#1EBEA5'
+    color: '#3b8183'
   },
   containerServicos: {
     maxWidth: 767,
@@ -177,51 +195,50 @@ const styles = StyleSheet.create({
     margin: -33,
     top: 60
   },
-  subcontainerItemsBorda:{
-    border: '1px solid #000',
+  subcontainerItemsBordaPadrao:{
+    border: '2px solid #3b8183',
+    borderRadius: 15,
     width: 300,
+    height: 360,
     left: 70,
-    top: 40
+    top: 40,
+    backgroundColor: '#FFFFFF'
   },
   subcontainerItemsBordaPesado: {
-    border: '1px solid #000',
+    border: '2px solid #3b8183',
+    borderRadius: 15,
     width: 300,
+    height: 380,
     left: 70,
-    top: 40,
-    height: 400
+    top: 25,
+    backgroundColor: '#FFFFFF'
   },
   subcontainerItemsBordaBeneficios: {
-    border: '1px solid #000',
+    border: '2px solid #3b8183',
+    borderRadius: 15,
     width: 300,
+    height: 360,
     left: 70,
-    top: 40,
-    height: 400
+    backgroundColor: '#FFFFFF'
   },
   subcontainerItemsBordaMateriais: {
-    border: '1px solid #000',
-    width: 300,
-    left: 70,
-    top: 40,
-    height: 400
-  },
-
-/*   containerPadraoPesado: {
-    height: 400,
-    width: 350,
-    alignItems: 'center',
-    left: 46,
-    bottom: -25,
+    border: '2px solid #3b8183',
     borderRadius: 15,
-    borderStyle: 'solid',
-    borderWidth: 2,
-    borderColor: '#1EBEA5',
-    boxShadow: '15px 15px 20px 0px rgba(0, 0, 0, 0.20)',
-    margin: 0
-  }, */
-/*   subcontainerItemsBorda:{
-    alignItems: 'center',
-    top: 180
-  }, */
+    width: 300,
+    height: 340,
+    left: 70,
+    top: -12,
+    backgroundColor: '#FFFFFF'
+  },
+  logoImage: {
+    maxWidth: 150,
+    maxHeight: 300,
+    left: 68,
+    height: 200
+  },
+  ImagemPesada:{
+    height: 180
+  },
   TextHeadlineServicos: {
     color: '#2C2C2C',
     fontFamily:'system-ui',
@@ -231,57 +248,60 @@ const styles = StyleSheet.create({
     textAlign:'center'
   },
   TextItems: {
-    color: 'rgb(30, 190, 165)',
+    color: '#3b8183',
     fontFamily:'system-ui',
-    fontSize: 16,
+    fontSize: 15,
     alignSelf: 'center',
-    listStyleType:'square'
+    listStyleType:'disclosure-closed',
+    fontWeight: 600
   },
-/*   containerBeneficiosMateriais:{
-    border: '1px solid #000',
-    width: 300,
-    left: 70,
-    top: 40
-  }, */
-/*   containerBeneficiosMateriais:{
-    height: 400,
-    width: 350,
-    left: 46,
-    alignItems: 'center',
-    borderRadius: 15,
-    borderStyle: 'solid',
-    borderWidth: 2,
-    borderColor: '#1EBEA5',
-    boxShadow: '15px 15px 20px 0px rgba(0, 0, 0, 0.20)',
-    margin: 0
-  }, */
   containersubheadlineThree:{
     alignItems:'center',
-    top: 11
+    top: 15
   },
   subheadlineThree:{
     fontSize: 18,
     fontFamily:'system-ui',
-    fontWeight: 300
+    fontWeight: 500
   },
   containersubheadlineFour: {
-    alignItems:'center'
+    alignItems:'center',
+    top: -6
   },
   subheadlineFour: {
     fontSize: 18,
     fontFamily:'system-ui',
-    fontWeight: 300,
+    fontWeight: 500,
     width: 375,
     textAlign: 'center'
   },
+  containerListBeneficiosMateriais:{
+    marginTop: 4
+  },
+  containerListPesado: {
+    marginTop: 30
+  },
+  whatsappIcon:{
+    maxHeight: 50,
+    maxWidth: 50,
+    top: -18,
+    left: 58,
+    borderRadius: 56
+  },
   containerWhatsapp:{
     alignItems: 'center',
-    bottom: 20
+    top: 18,
+    left: 24
   },
   whatsappText: {
     fontSize: 16,
     fontWeight: 800,
     color: '#000000'
+  },
+  containerWhatsappTexto:{
+    display: 'flex',
+    alignItems: 'initial',
+    top: -8
   }
 
 })

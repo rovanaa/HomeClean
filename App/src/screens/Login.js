@@ -41,6 +41,10 @@ const Login = ({ navigation }) => {
                 resizeMode="contain"
             />
 
+            <View style={styles.loginBorda}> 
+            <Text style={styles.boasVindas}>
+                Seja bem-vindo ao app da HomeClean!
+            </Text>
             <CustomInput
                 placeholder="Email"
                 value={email}
@@ -54,7 +58,7 @@ const Login = ({ navigation }) => {
                 secureTextEntry={true}
             />
 
-            <CustomButton text="Login" onPress={onLoginPressed} />
+            <CustomButton text="Login" onPress={onLoginPressed} style={styles.Logintext}/>
 
             <TouchableOpacity
                 onPress={() => navigation.navigate("RegisterUser")}
@@ -62,29 +66,47 @@ const Login = ({ navigation }) => {
                 <Text>
                     Não tem uma conta?{" "}
                     <Text style={styles.createAccountText}>
-                        Crie uma
+                        Cadastre-se
                     </Text>
                 </Text>
             </TouchableOpacity>
-
+            </View>
         </View>
     )
 };
 
 const styles = StyleSheet.create({
     view: {
+        flex: 1,
         alignItems: 'center',
         padding: 20,
+        backgroundColor: '#7ed6d2'
     },
     logo: {
         width: '70%',
         maxWidth: 300,
         maxHeight: 200,
     },
+    boasVindas:{
+        fontSize: 15,
+        fontWeight: 700,
+        margin: 16
+    },
     createAccountText: {
         fontWeight: "bold",
-        color: "#6200ee",
+        color: "#3b8183",
     },
+    loginBorda:{
+        border: '3px solid #deb0be',
+        width: 350,
+        top: 13,
+        alignItems: 'center',
+        height: 292,
+        gap: 6,
+        borderRadius: 8,
+        backgroundColor: '#deb0be'
+    }
+
 });
 
 export default Login;
