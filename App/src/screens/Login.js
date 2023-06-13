@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#7ed6d2'
+        backgroundColor: '#086863'
     },
     logo: {
         width: '70%',
@@ -90,21 +90,21 @@ const styles = StyleSheet.create({
     boasVindas:{
         fontSize: 15,
         fontWeight: 700,
-        margin: 16
+        margin: 30
     },
     createAccountText: {
         fontWeight: "bold",
-        color: "#3b8183",
+        color: "#042624",
     },
     loginBorda:{
-        border: '3px solid #deb0be',
+        border: '3px solid #4d9b97',
         width: 350,
         top: 13,
         alignItems: 'center',
         height: 292,
         gap: 6,
         borderRadius: 8,
-        backgroundColor: '#deb0be'
+        backgroundColor: '#4d9b97'
     }
 
 });
