@@ -142,9 +142,7 @@ const Home = ({navigation}) => {
 export default Home
 const styles = StyleSheet.create({
    container: {
-    flex: 1
-  },
-  scrollView: {
+    flex: 1,
     backgroundColor: '#7ed6d2'
   },
   headLine: {
@@ -165,7 +163,7 @@ const styles = StyleSheet.create({
     left: 29,
     backgroundColor: 'white',
     height: 25,
-    alignItems: 'center'
+    justifyContent: 'center'
   },
   subheadlineOne:{
     textAlign: 'center',

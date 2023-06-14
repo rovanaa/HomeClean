@@ -39,7 +39,7 @@ const Routes = () => {
     />
 
     <Tab.Screen
-        name='Serviços'
+        name='Servicos'
         component={Servicos}
         options={{
             tabBarIcon: () => (

@@ -2,7 +2,7 @@ import {
     StyleSheet, Text, View, Image, useWindowDimensions, TouchableOpacity
 } from "react-native";
 import React, { useState } from 'react';
-import Logo from '../assets/images/logo.png';
+import Logo from '../assets/images/logo.jpeg';
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import api from "../api";
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#086863'
+        backgroundColor: '#FFF'
     },
     logo: {
         width: '80%',
@@ -117,12 +117,11 @@ const styles = StyleSheet.create({
     cadastroBorda:{
         border: '3px solid #4d9b97',
         width: 350,
-        top: 29,
         alignItems: 'center',
         height: 300,
         gap: 6,
         borderRadius: 8,
-        backgroundColor: '#4d9b97'
+        backgroundColor: '#7ed6d2'
     },
     cadastroInput:{
        margin: 20,

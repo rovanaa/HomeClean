@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity, View, Image, useWindowDimensions, Text, TextInput } from "react-native";
 import React, { useState, useContext } from 'react';
-import Logo from '../assets/images/logo.png';
+import Logo from '../assets/images/logo.jpeg';
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#086863'
+        backgroundColor: '#FFF'
     },
     logo: {
         width: '70%',
@@ -99,12 +99,11 @@ const styles = StyleSheet.create({
     loginBorda:{
         border: '3px solid #4d9b97',
         width: 350,
-        top: 13,
         alignItems: 'center',
         height: 292,
         gap: 6,
         borderRadius: 8,
-        backgroundColor: '#4d9b97'
+        backgroundColor: '#7ed6d2'
     }
 
 });
