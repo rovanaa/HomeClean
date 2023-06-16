@@ -7,8 +7,9 @@ import { Entypo } from '@expo/vector-icons'
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 import Home from './Home'
+import AgendamentoRoutes from './agendamento/AgendamentoRoutes'
+/* import Perfil from './Perfil' */
 import Servicos from './Servicos'
-import Perfil from './Perfil'
 
 
 const Tab = createBottomTabNavigator();
@@ -33,30 +34,40 @@ const Routes = () => {
         component={Home}
         options={{
             tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" size={24} color="black" />
+                <MaterialCommunityIcons name="home" size={26} color="black" />
+            )
+        }}
+    />
+    
+    <Tab.Screen
+        name='Agendamento'
+        component={AgendamentoRoutes}
+        options={{
+            tabBarIcon: () => (
+                <MaterialCommunityIcons name="calendar-clock" size={26} color="black"/>
             )
         }}
     />
 
     <Tab.Screen
-        name='Servicos'
+        name='Serviços'
         component={Servicos}
         options={{
             tabBarIcon: () => (
-                <MaterialCommunityIcons name="broom" size={24} color="black"/>
+                <MaterialCommunityIcons name="broom" size={26} color="black"/>
             )
         }}
     />
 
-    <Tab.Screen
+{/*     <Tab.Screen
         name='Perfil'
         component={Perfil}
         options={{
             tabBarIcon: () => (
-                <MaterialCommunityIcons name="account" size={24} color="black" />
+                <MaterialCommunityIcons name="account" size={26} color="black" />
             )
         }}
-    />
+    /> */}
 
 
     </Tab.Navigator>

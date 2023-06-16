@@ -1,48 +1,40 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { View,  StyleSheet,Text } from 'react-native';
+import UserList from '../UserList';
+import AddUser from '../AddUser';
+import User from '../User';
 
-const EditProfileScreen = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+const perfil = () => {
+    const [users, setUsers] = useState([
+/*     new User(1, 'John Doe', 'johndoe@example.com'),
+    new User(2, 'Jane Smith', 'janesmith@example.com'), */
+  
+  ]);
 
-  const handleSaveProfile = () => {
-    // Aqui você pode implementar a lógica para salvar as alterações do perfil do usuário
-    // Por exemplo, fazer uma chamada para uma API ou atualizar os dados no armazenamento local
-
-    console.log('Nome:', name);
-    console.log('E-mail:', email);
-    console.log('Número de telefone:', phoneNumber);
-
-    // Restaurar os campos para o estado inicial
-    setName('');
-    setEmail('');
-    setPhoneNumber('');
+  const addUser = (name, email) => {
+    const newUser = new User(users.length + 1, name, email);
+    setUsers([...users, newUser]);
   };
 
+  const deleteUser = (userId) => {
+    const updatedUsers = users.filter((user) => user.id !== userId);
+    setUsers(updatedUsers);
+  };
+
+
   return (
-    <View>
-      <TextInput
-        placeholder="Nome"
-        value={name}
-        onChangeText={setName}
-      />
-      <TextInput
-        placeholder="E-mail"
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput
-        placeholder="Número de telefone"
-        value={phoneNumber}
-        onChangeText={setPhoneNumber}
-      />
-      <Button
-        title="Salvar"
-        onPress={handleSaveProfile}
-      />
+    <View style={styles.container}>
+      <UserList users={users} deleteUser={deleteUser} />
+      <AddUser addUser={addUser} />
     </View>
   );
 };
 
-export default EditProfileScreen;
+export default perfil;
+
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+        backgroundColor: '#7ed6d2'
+    }
+})

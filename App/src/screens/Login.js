@@ -104,6 +104,10 @@ const styles = StyleSheet.create({
         gap: 6,
         borderRadius: 8,
         backgroundColor: '#7ed6d2'
+    },
+    loginText: {
+        fontWeight: "bold",
+        color: "#042624",
     }
 
 });

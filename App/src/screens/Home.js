@@ -1,19 +1,58 @@
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, useWindowDimensions } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, FlatList, TouchableOpacity, useWindowDimensions } from 'react-native'
 import React from 'react';
-import LogoOficial from '../assets/images/logoOficial.jpeg';
 import LogoTwo from '../assets/images/LogoTwo.png';
 import ImagemPadrao from '../assets/images/ImagemPadrao.jpeg';
 import ImagemPesada from '../assets/images/ImagemPesada.jpeg';
 import ImagemBeneficio from '../assets/images/ImagemBeneficio.jpg';
 import LogoThree from '../assets/images/logoThree.jpg';
 import LogoWhatsapp from '../assets/images/LogoWhatsapp.jpeg';
+import CustomButton from "../components/CustomButton.js";
+import Agendamento from './agendamento/RegisterAgendamento';
+
+
+const padrao = [
+  { id: '1', text: '▶ Arrumação e organização' },
+  { id: '2', text: '▶ Cozinha e banheiro completo' },
+  { id: '3', text: '▶ Limpeza de móveis e eletrônicos.' },
+  { id: '4', text: '▶ Varrer e passar pano' },
+];
+
+const pesada = [
+  { id: '1', text: '▶ Arrumação e organização;' },
+  { id: '2', text: '▶ Inclui todos os itens da limpeza padrão.' },
+  { id: '4', text: '▶ Janelas e interior dos móveis;' },
+  { id: '5', text: '▶ Paredes, portas e rodapés;' },
+];
+
+const beneficios = [
+  { id: '1', text: '▶ Atendimento humanizado;' },
+  { id: '2', text: '▶ Horários disponíveis diferenciados;' },
+  { id: '3', text: '▶ Pagamento facilitado;' },
+  { id: '4', text: '▶ Praticidade na contratação;' },
+  { id: '5', text: '▶ Profissional qualificado;' },
+  { id: '6', text: '▶ Segurança garantida;' },
+];
+
+const materias = [
+  { id: '1', text: '▶ Água sanitária e limpa vidros.' },
+  { id: '2', text: '▶ Detergentes, desinfetantes;' },
+  { id: '3', text: '▶ Escovas e esponjas;' },
+  { id: '4', text: '▶ Panos de chão e limpeza;' },
+  { id: '5', text: '▶ Vassoura, rodo, pá e balde;' },
+];
+
+const renderItem = ({ item }) => {
+  return (
+    <Text style={styles.TextItems}>{item.text}</Text>
+  );
+};
 
 const Home = ({navigation}) => {
   const { height } = useWindowDimensions();
   return (
     <View style={styles.container}> 
       <ScrollView style={styles.scrollView}>
- <View style={styles.headLine}>
+      <View style={styles.headLine}>
         <Text style={styles.headLineText}>HomeClean</Text>
         </View>
 
@@ -30,7 +69,7 @@ const Home = ({navigation}) => {
       </View>
 
       <View style={styles.containersubheadlineTwo}>
-       <Text style={styles.subheadlineTwo}> Conheça todos os serviços de limpeza oferecidos pela <b style={styles.homeCleanNegrito}>HomeClean!</b></Text>
+       <Text style={styles.subheadlineTwo}> Conheça todos os serviços de limpeza oferecidos pela HomeClean!</Text>
       </View>
      <View style={styles.containerServicos}>
           <View tyle={styles.containerPadraoPesado}>
@@ -40,13 +79,14 @@ const Home = ({navigation}) => {
               style={styles.logoImage}
               resizeMode="contain"
                 />
-            <Text style={styles.TextHeadlineServicos}>Limpeza Padrão</Text>
-            <ul style={styles.containerList}>
-              <li style={styles.TextItems}>Varrer e passar pano;</li>
-              <li style={styles.TextItems}>Cozinha e banheiro completo;</li>
-              <li style={styles.TextItems}>Arrumação e organização;</li>
-              <li style={styles.TextItems}>Limpeza de móveis e eletrônicos.</li>
-            </ul>
+            <Text style={styles.TextHeadlinePadrao}>Limpeza Padrão</Text>
+               <View  style={styles.TextItems}>
+                <FlatList
+                  data={padrao}
+                  renderItem={renderItem}
+                  keyExtractor={item => item.id}
+                />
+              </View>
             </View>
           </View>
 
@@ -59,18 +99,20 @@ const Home = ({navigation}) => {
               resizeMode="contain"
                 />
             </View>
-            <Text style={styles.TextHeadlineServicos}>Limpeza Pesada</Text>
-            <ul style={styles.containerListPesado}>
-              <li style={styles.TextItems}>Inclui todos os itens da limpeza padrão;</li>
-              <li style={styles.TextItems}>Paredes, portas e rodapés;</li>
-              <li style={styles.TextItems}>Arrumação e organização;</li>
-              <li style={styles.TextItems}>Janelas e interior dos móveis.</li>
-            </ul>
+            <Text style={styles.TextHeadlinePesada}>Limpeza Pesada</Text>
+             <View  style={styles.containerListPesado}>
+                <FlatList
+                  data={pesada}
+                  renderItem={renderItem}
+                  keyExtractor={item => item.id}
+                  style={styles.TextItems}
+                  />
+              </View>
             </View>
           </View>
 
           <View style={styles.containersubheadlineThree}>
-             <Text style={styles.subheadlineThree}> Benefícios de contratar pela <b style={styles.homeCleanNegrito}>HomeClean!</b> </Text>
+             <Text style={styles.subheadlineThree}> Benefícios de contratar pela HomeClean! </Text>
           </View>
 
           <View style={styles.containerBeneficiosMateriais}>
@@ -82,14 +124,17 @@ const Home = ({navigation}) => {
               resizeMode="contain"
                 />
 
-            <ul style={styles.containerListBeneficiosMateriais}>
-              <li style={styles.TextItems}>Praticidade na contratação;</li>
-              <li style={styles.TextItems}>Pagamento facilitado;</li>
-              <li style={styles.TextItems}>Horários disponíveis diferenciados;</li>
-              <li style={styles.TextItems}>Segurança garantida;</li>
-              <li style={styles.TextItems}>Profissional qualificado;</li>
-              <li style={styles.TextItems}>Atendimento humanizado.</li>
-            </ul>
+            <View style={styles.containerListBeneficiosMateriais}>
+              <View>
+              <FlatList
+                  data={beneficios}
+                  renderItem={renderItem}
+                  keyExtractor={item => item.id}
+                  style={styles.TextItems}
+                  />
+                </View>
+              </View>
+
             </View>
           </View>
 
@@ -106,27 +151,35 @@ const Home = ({navigation}) => {
               resizeMode="contain"
                 />
 
-            <ul style={styles.containerListBeneficiosMateriais}>
-              <li style={styles.TextItems}>Vassoura, rodo, pá e balde;</li>
-              <li style={styles.TextItems}>Escovas e esponjas;</li>
-              <li style={styles.TextItems}>Panos de chão e limpeza;</li>
-              <li style={styles.TextItems}>Detergentes, desinfetantes;</li>
-              <li style={styles.TextItems}>Água sanitária e limpa vidros.</li>
-            </ul>
+          <View  style={styles.containerListBeneficiosMateriais}>
+                <FlatList
+                  data={materias}
+                  renderItem={renderItem}
+                  keyExtractor={item => item.id}
+                  style={styles.TextItems}
+                  />
+              </View>
+
             </View>
           </View>
+            <View style= {styles.Button}>
+            <CustomButton 
+            text="CONTRATAR AGORA"
+            onPress={(Agendamento)}/>
+          </View>
+
           <View style={styles.containerWhatsappTexto}>
           <View style={styles.containerWhatsapp}>
              <Text style={styles.whatsappText}> Tire suas dúvidas por whatsapp </Text>
           </View>
           <View>
           <TouchableOpacity onPress={() => Linking.openURL('web.whatsapp.com')}>
-              <a href="https://web.whatsapp.com/" target="_blank">
-          <Image
+            
+            <Image
               source={LogoWhatsapp}
               style={[styles.whatsappIcon, { height: height * 0.3 }]}
               resizeMode="contain"/>
-              </a>
+            
           </TouchableOpacity>
           </View>
           </View>
@@ -150,7 +203,7 @@ const styles = StyleSheet.create({
   },
   headLineText: {
     fontSize: 40,
-    fontWeight: 900,
+    fontWeight: 500,
     fontFamily: 'system-ui',
     width: 260,
     textAlign: 'center',
@@ -183,9 +236,6 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     fontFamily:'system-ui'
   },
-  homeCleanNegrito:{
-    color: '#3b8183'
-  },
   containerServicos: {
     maxWidth: 767,
     gap: 40,
@@ -196,62 +246,72 @@ const styles = StyleSheet.create({
   subcontainerItemsBordaPadrao:{
     border: '2px solid #3b8183',
     borderRadius: 15,
-    width: 300,
-    height: 360,
-    left: 70,
+    width: 330,
+    height: 370,
+    left: 58,
     top: 40,
     backgroundColor: '#FFFFFF'
   },
   subcontainerItemsBordaPesado: {
     border: '2px solid #3b8183',
     borderRadius: 15,
-    width: 300,
+    width: 330,
     height: 380,
-    left: 70,
+    left: 58,
     top: 25,
     backgroundColor: '#FFFFFF'
   },
   subcontainerItemsBordaBeneficios: {
     border: '2px solid #3b8183',
     borderRadius: 15,
-    width: 300,
-    height: 360,
-    left: 70,
+    width: 330,
+    height: 380,
+    left: 58,
     backgroundColor: '#FFFFFF'
   },
   subcontainerItemsBordaMateriais: {
     border: '2px solid #3b8183',
     borderRadius: 15,
-    width: 300,
-    height: 340,
-    left: 70,
+    width: 330,
+    height: 370,
+    left: 58,
     top: -12,
     backgroundColor: '#FFFFFF'
   },
   logoImage: {
     maxWidth: 150,
     maxHeight: 300,
-    left: 68,
-    height: 200
+    left: 84,
+    height: 200,
+    position:'relative'
   },
   ImagemPesada:{
     height: 180
   },
-  TextHeadlineServicos: {
+  TextHeadlinePadrao: {
     color: '#2C2C2C',
     fontFamily:'system-ui',
-    lineHeight: 35,
+    marginBottom: 21,
+    fontSize: 18,
+    fontWeight: 900,
+    textAlign:'center'
+  },
+  TextHeadlinePesada:{
+    color: '#2C2C2C',
+    fontFamily:'system-ui',
+    marginTop: 26,
+    marginBottom: -10,
     fontSize: 18,
     fontWeight: 800,
     textAlign:'center'
   },
   TextItems: {
-    color: '#3b8183',
+    color: '#000000',
     fontFamily:'system-ui',
     fontSize: 15,
-    alignSelf: 'center',
-    listStyleType:'disclosure-closed',
-    fontWeight: 600
+    fontWeight: 600,
+    left: 26,
+    gap: 15
   },
   containersubheadlineThree:{
     alignItems:'center',
@@ -300,6 +360,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'initial',
     top: -8
+  },
+  Button:{
+    width: 300,
+    alignItems: 'center',
+    justifyContent: 'center',
+    left: 76,
   }
 
 })

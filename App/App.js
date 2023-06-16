@@ -7,6 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Context, Provider } from './src/context/dataContext';
 
 import Routes from './src/screens/Routes';
+import Welcome from './src/screens/Welcome';
 import Login from './src/screens/Login';
 import RegisterUser from './src/screens/RegisterUser';
 import ValidateToken from './src/screens/ValidateToken';
@@ -23,11 +24,12 @@ const App = () => {
         ) : (
           state.isLogged ? (
             <>
-              <Stack.Screen name="ValidateToken" component={ValidateToken} />
+            <Stack.Screen name="ValidateToken" component={ValidateToken} />
             <Stack.Screen name="Routes" component={Routes} />
             </>
           ) : (
             <>
+              <Stack.Screen name="Welcome" component={Welcome} />
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="RegisterUser" component={RegisterUser} />
             </>
