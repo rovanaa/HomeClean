@@ -3,14 +3,13 @@ import React, {useContext} from 'react'
 import { Context } from '../context/dataContext'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Entypo } from '@expo/vector-icons'
+import { AntDesign } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
+import UserRoutes from './user/UserRoutes'
 import Home from './Home'
 import AgendamentoRoutes from './agendamento/AgendamentoRoutes'
-/* import Perfil from './Perfil' */
-import Servicos from './Servicos'
-
+import ServicosRoutes from './servicos/ServicosRoutes'
 
 const Tab = createBottomTabNavigator();
 
@@ -19,11 +18,11 @@ const Routes = () => {
   return (
     <Tab.Navigator screenOptions={{
         headerRight: () => (
-            <Entypo
-                name='log-out'
+            <AntDesign
+                name='logout'
                 size={20}
                 style={{margin: 10}}
-                color='#000'
+                color="black"
                 onPress={() => dispatch({type: 'logOut'})}
              />
         )
@@ -34,7 +33,7 @@ const Routes = () => {
         component={Home}
         options={{
             tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" size={26} color="black" />
+                <MaterialCommunityIcons name="home" size={30} color="black" />
             )
         }}
     />
@@ -44,31 +43,30 @@ const Routes = () => {
         component={AgendamentoRoutes}
         options={{
             tabBarIcon: () => (
-                <MaterialCommunityIcons name="calendar-clock" size={26} color="black"/>
+                <MaterialCommunityIcons name="calendar-clock" size={30} color="black"/>
             )
         }}
     />
 
     <Tab.Screen
         name='Serviços'
-        component={Servicos}
+        component={ServicosRoutes}
         options={{
             tabBarIcon: () => (
-                <MaterialCommunityIcons name="broom" size={26} color="black"/>
+                <MaterialCommunityIcons name="broom" size={30} color="black"/>
             )
         }}
     />
 
-{/*     <Tab.Screen
+    <Tab.Screen
         name='Perfil'
-        component={Perfil}
+        component={UserRoutes}
         options={{
             tabBarIcon: () => (
-                <MaterialCommunityIcons name="account" size={26} color="black" />
+                <MaterialCommunityIcons name="account" size={30} color="black" />
             )
         }}
-    /> */}
-
+    /> 
 
     </Tab.Navigator>
   )

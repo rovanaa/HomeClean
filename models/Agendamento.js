@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import connection from '../config/db.js';
+import User from '../models/User.js'
 
 const Agendamento = connection.define(
     'agendamento',
@@ -29,8 +30,20 @@ const Agendamento = connection.define(
         text: {
             type: Sequelize.STRING,
             allowNull: false
-        }
+        },
+        idUser: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'users',
+                key: 'id'
+            }
+        },
     }
-)
+);
+
+Agendamento.belongsTo(User, {
+    foreignKey: 'idUser'
+});
 
 export default Agendamento;

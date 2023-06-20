@@ -4,8 +4,10 @@ import Logo from '../assets/images/logo.jpeg';
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import api from '../api';
+import api from '../api/index'
 import { Context } from '../context/dataContext';
+import swal from 'sweetalert';
+ 
 
 const Login = ({ navigation }) => {
     const { dispatch } = useContext(Context);
@@ -22,11 +24,21 @@ const Login = ({ navigation }) => {
                 await AsyncStorage.setItem('token', authData.data.token)
                 dispatch({type:'logIn', payload: true})
             } else {
-                alert('Email ou Senha Inválidos')
+                swal({
+                    title: "Erro!",
+                    text: "Email ou Senha Inválidos.",
+                    icon: "error",
+                    button: "OK",
+                  });
                 setPassword('')
             }
         } catch (error) {
-            alert('Email ou Senha Inválidos')
+            swal({
+                title: "Erro!",
+                text: "Email ou Senha Inválidos.",
+                icon: "error",
+                button: "OK",
+              });
             setPassword('')
         }
     }
@@ -43,7 +55,7 @@ const Login = ({ navigation }) => {
 
             <View style={styles.loginBorda}> 
             <Text style={styles.boasVindas}>
-                Seja bem-vindo ao app da HomeClean!
+                Seja bem-vindo(a)!
             </Text>
             <CustomInput
                 placeholder="Email"
@@ -99,8 +111,10 @@ const styles = StyleSheet.create({
     loginBorda:{
         border: '3px solid #4d9b97',
         width: 350,
+        bottom: 15,
         alignItems: 'center',
         height: 292,
+        bottom: 20,
         gap: 6,
         borderRadius: 8,
         backgroundColor: '#7ed6d2'

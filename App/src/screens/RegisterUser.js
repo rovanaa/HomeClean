@@ -6,6 +6,8 @@ import Logo from '../assets/images/logo.jpeg';
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import api from "../api";
+import {Picker} from '@react-native-picker/picker';
+import swal from 'sweetalert';
 
 const RegisterUser = ({ navigation }) => {
     const [name, setName] = useState('');
@@ -79,6 +81,16 @@ const RegisterUser = ({ navigation }) => {
                 style={styles.cadastroInput}
             />
             </View>
+
+            <Picker
+                selectedValue={admin}
+                style={styles.picker}
+                onValueChange={setAdmin}
+            >
+                <Picker.Item label="Cliente" value="true" />
+                <Picker.Item label="Administrador" value="false" />
+            </Picker>
+
             <View  style={styles.bottom}>
             <CustomButton text="Register" onPress={onRegisterPressed} />
             </View>
@@ -118,10 +130,10 @@ const styles = StyleSheet.create({
         border: '3px solid #4d9b97',
         width: 350,
         alignItems: 'center',
-        height: 300,
-        gap: 6,
+        height: 360,
         borderRadius: 8,
-        backgroundColor: '#7ed6d2'
+        backgroundColor: '#7ed6d2',
+        bottom: 20
     },
     cadastroInput:{
        margin: 20,
@@ -130,7 +142,8 @@ const styles = StyleSheet.create({
     },
     subContainer:{
         top: 26,
-        right: 44
+        right: 44,
+        gap: 4
     },
     inputName: {
         width: '180%'
@@ -142,6 +155,18 @@ const styles = StyleSheet.create({
     bottom: {
         width: '180%',
         top: 4
+    },
+    picker:{
+        marginVertical: 5,
+        borderRadius: 5,
+        backgroundColor: 'lightgray',
+        textAlignVertical: 'center',
+        textAlign: 'center',
+        fontSize: '14px',
+        fontWeight: 'bold',
+        borderWidth: 0,
+        height: 45,
+        width: '145%'
     }
 });
 

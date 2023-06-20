@@ -65,11 +65,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'lightblue',
         alignItems: 'center'
     },
-    text: {
+/*     text: {
         height: 120,
         width: '80%',
         justifyContent: "center",
-    },
+    }, */
     title: {
         fontSize: 30
     },

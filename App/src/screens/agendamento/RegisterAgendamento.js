@@ -6,6 +6,7 @@ import CustomInput from "../../components/CustomInput.js";
 import CustomButton from "../../components/CustomButton.js";
 import api from '../../api';
 import { Context } from '../../context/dataContext'
+import { DatePickerInput } from 'react-native-paper-dates';
 
 const Agendamento = ({ navigation }) => {
 
@@ -16,10 +17,6 @@ const Agendamento = ({ navigation }) => {
   const [optLocal, setOptLocal] = useState('');
   const [optAdic, setOptAdic] = useState([]);
   const [optData, setOptData] = useState('');
-
-  useEffect(()=> {
-    console.log(text)
-  }, [text])
 
 
   const optionservico = [
@@ -43,23 +40,25 @@ const Agendamento = ({ navigation }) => {
   
   ];
 
-  const optionsdata = [
-    {text: 'O quanto antes possível', id: 1},
-    {text: 'Nos próximos 15 dias', id: 2},   
-    {text: 'Nos próximos 30 dias', id: 3}, 
-    {text: 'Nos próximos 3 meses', id: 4}
-  ];
+  // const optionsdata = [
+  //   {text: 'O quanto antes possível', id: 1},
+  //   {text: 'Nos próximos 15 dias', id: 2},   
+  //   {text: 'Nos próximos 30 dias', id: 3}, 
+  //   {text: 'Nos próximos 3 meses', id: 4}
+  // ];
 
   const { height } = useWindowDimensions();
 
   const onRegisterPressed = async () => {
+    let adic = optAdic.toString();
     try {
         const authData = await api.post("/agendamento/register", {
           optServ: optServ,
           optLocal: optLocal,
-          optAdic: optAdic,
+          optAdic: adic,
           optData: optData,
-          text: text
+          text: text,
+          idUser: state.idUser
         });
         if (authData.status === 200) {
             alert(authData.data.message)
@@ -94,9 +93,18 @@ const Agendamento = ({ navigation }) => {
       <CheckBox options={optionsadicional} onChange={op=> setOptAdic(op)} multiple/>
 
       <Text style= {styles.title}> Para quando você precisa deste serviço? </Text>
-      <CheckBox options={optionsdata} onChange={op=> setOptData(op[0])} />
+      {/* <CheckBox options={optionsdata} onChange={op=> setOptData(op[0])} /> */}
+      <View style= {styles.calendar}>
+      <DatePickerInput
+                locale="pt"
+                label="Agendamento"
+                value={optData}
+                onChange={(d) => setOptData(d)}
+                inputMode="start"
+            />
+      </View>
       
-      <Text style= {styles.title}> Explique o que você precisa? </Text>
+      <Text style= {styles.title}> Nos informe o seu endereço! </Text>
       <View style= {styles.input}>
         <CustomInput
           placeholder="Escreva aqui"
@@ -105,7 +113,7 @@ const Agendamento = ({ navigation }) => {
           style= {styles.textArea}
             />
       </View>
-      <Text style= {styles.contepranos} >👆 Conte para nós sobre sua necessidade: detalhes, preferências, etc.</Text>
+      <Text style= {styles.contepranos} >👆 Insira a sua rua, número, bairro e o cep.</Text>
 
       <View style= {styles.Button}>
 
@@ -138,7 +146,8 @@ const styles = StyleSheet.create({
     marginBottom: -2
   },
   input:{
-    left: 12
+    left: 12,
+    margin: 5
   },
   textArea:{
     height: 101,
@@ -152,6 +161,14 @@ const styles = StyleSheet.create({
     margin: 20
   },
   contepranos:{
-    paddingLeft: 11
+    paddingLeft: 13,
+    fontSize: 14,
+    fontWeight: 500
+  },
+  calendar:{
+    margin: 20,
+    right: 5,
+    border: '4px solid #3b8183',
+    borderRadius: 8
   }
 })

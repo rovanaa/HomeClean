@@ -8,6 +8,8 @@ import LogoThree from '../assets/images/logoThree.jpg';
 import LogoWhatsapp from '../assets/images/LogoWhatsapp.jpeg';
 import CustomButton from "../components/CustomButton.js";
 import Agendamento from './agendamento/RegisterAgendamento';
+import * as Animatable from 'react-native-animatable'
+import { Linking } from 'react-native';
 
 
 const padrao = [
@@ -53,7 +55,9 @@ const Home = ({navigation}) => {
     <View style={styles.container}> 
       <ScrollView style={styles.scrollView}>
       <View style={styles.headLine}>
-        <Text style={styles.headLineText}>HomeClean</Text>
+        <Animatable.View delay={500} animation="bounceInDown">
+          <Text style={styles.headLineText}>Home Clean</Text>
+        </Animatable.View>
         </View>
 
         <View style={styles.containerImageOficial}>
@@ -69,7 +73,7 @@ const Home = ({navigation}) => {
       </View>
 
       <View style={styles.containersubheadlineTwo}>
-       <Text style={styles.subheadlineTwo}> Conheça todos os serviços de limpeza oferecidos pela HomeClean!</Text>
+       <Text style={styles.subheadlineTwo}> Conheça todos os serviços de limpeza oferecidos pela Home Clean!</Text>
       </View>
      <View style={styles.containerServicos}>
           <View tyle={styles.containerPadraoPesado}>
@@ -112,7 +116,7 @@ const Home = ({navigation}) => {
           </View>
 
           <View style={styles.containersubheadlineThree}>
-             <Text style={styles.subheadlineThree}> Benefícios de contratar pela HomeClean! </Text>
+             <Text style={styles.subheadlineThree}> Benefícios de contratar pela Home Clean! </Text>
           </View>
 
           <View style={styles.containerBeneficiosMateriais}>
@@ -161,28 +165,36 @@ const Home = ({navigation}) => {
               </View>
 
             </View>
+            
           </View>
+            
             <View style= {styles.Button}>
-            <CustomButton 
-            text="CONTRATAR AGORA"
-            onPress={(Agendamento)}/>
-          </View>
+              <CustomButton 
+              text="CONTRATAR AGORA"
+              onPress={() => navigation.navigate("Agendamento")}/>
+            </View>
 
           <View style={styles.containerWhatsappTexto}>
-          <View style={styles.containerWhatsapp}>
-             <Text style={styles.whatsappText}> Tire suas dúvidas por whatsapp </Text>
-          </View>
-          <View>
-          <TouchableOpacity onPress={() => Linking.openURL('web.whatsapp.com')}>
-            
-            <Image
-              source={LogoWhatsapp}
-              style={[styles.whatsappIcon, { height: height * 0.3 }]}
-              resizeMode="contain"/>
-            
-          </TouchableOpacity>
-          </View>
-          </View>
+              <TouchableOpacity >
+                  <Image
+                  source={LogoWhatsapp}
+                  style={[styles.whatsappIcon, { height: height * 0.3 }]}
+                  resizeMode="contain"
+                  />
+              </TouchableOpacity>
+
+              <View style={styles.containerWhatsapp}>
+              <TouchableOpacity >
+                <Text
+                  style={styles.whatsappText}
+                  onPress={() => {
+                    Linking.openURL('https://api.whatsapp.com/send?phone=5548992095395');
+                  }}>
+                  Tire suas dúvidas por whatsapp
+                </Text>
+                </TouchableOpacity>
+            </View>
+        </View>
 
       </View>
 
@@ -203,7 +215,6 @@ const styles = StyleSheet.create({
   },
   headLineText: {
     fontSize: 40,
-    fontWeight: 500,
     fontFamily: 'system-ui',
     width: 260,
     textAlign: 'center',
@@ -348,7 +359,7 @@ const styles = StyleSheet.create({
   },
   containerWhatsapp:{
     alignItems: 'center',
-    top: 18,
+    top: -55,
     left: 24
   },
   whatsappText: {
@@ -359,13 +370,14 @@ const styles = StyleSheet.create({
   containerWhatsappTexto:{
     display: 'flex',
     alignItems: 'initial',
-    top: -8
+    top: 14
   },
   Button:{
     width: 300,
     alignItems: 'center',
     justifyContent: 'center',
     left: 76,
+    height: 18
   }
 
 })
