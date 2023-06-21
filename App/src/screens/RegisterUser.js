@@ -73,15 +73,7 @@ const RegisterUser = ({ navigation }) => {
                 style={styles.cadastroInput}
             />
               </View>
-            <View  style={styles.inputName}>
-            <CustomInput
-                placeholder="Admin"
-                value={admin}
-                setValue={setAdmin}
-                style={styles.cadastroInput}
-            />
-            </View>
-
+            
             <Picker
                 selectedValue={admin}
                 style={styles.picker}
@@ -90,6 +82,9 @@ const RegisterUser = ({ navigation }) => {
                 <Picker.Item label="Cliente" value="true" />
                 <Picker.Item label="Administrador" value="false" />
             </Picker>
+            
+
+            
 
             <View  style={styles.bottom}>
             <CustomButton text="Register" onPress={onRegisterPressed} />
@@ -130,7 +125,7 @@ const styles = StyleSheet.create({
         border: '3px solid #4d9b97',
         width: 350,
         alignItems: 'center',
-        height: 360,
+        height: 320,
         borderRadius: 8,
         backgroundColor: '#7ed6d2',
         bottom: 20
@@ -161,12 +156,14 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         backgroundColor: 'lightgray',
         textAlignVertical: 'center',
-        textAlign: 'center',
+        textAlign: 'left    ',
         fontSize: '14px',
         fontWeight: 'bold',
+        fontFamily: "Helvetica",
         borderWidth: 0,
-        height: 45,
-        width: '145%'
+        height: 30,
+        width: '145%',
+        padding: 6,
     }
 });
 

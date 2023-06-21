@@ -36,7 +36,7 @@ const ServicosAgendamento = ({ navigation }) => {
                                 <Text style={styles.item}>{item.optServ}</Text>
                                 <Text style={styles.item}>{item.optLocal}</Text>
                                 <Text style={styles.item}>{item.optAdic}</Text>
-                                <Text style={styles.item}>{item.setOptData}</Text>
+                                <Text style={styles.item}>{item.optData}</Text>
                                 <Text style={styles.item}>{item.text}</Text>
                             </View>
                             </Animatable.View>
