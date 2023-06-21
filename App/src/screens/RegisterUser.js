@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     loginText: {
         fontWeight: "bold",
         color: "#042624",
+        fontFamily: 'system-ui'
     },
     cadastroBorda:{
         border: '3px solid #4d9b97',
@@ -133,7 +134,8 @@ const styles = StyleSheet.create({
     cadastroInput:{
        margin: 20,
        width: 110,
-       left: -9
+       left: -9,
+       fontFamily: 'system-ui'
     },
     subContainer:{
         top: 26,
@@ -141,14 +143,16 @@ const styles = StyleSheet.create({
         gap: 4
     },
     inputName: {
-        width: '180%'
+        width: '179%',
+        fontFamily: 'system-ui'
     },
     containerText:{
         left: 45,
-        top: 8
+        top: 8,
+        fontFamily: 'system-ui'
     },
     bottom: {
-        width: '180%',
+        width: '179%',
         top: 4
     },
     picker:{
@@ -159,10 +163,10 @@ const styles = StyleSheet.create({
         textAlign: 'left    ',
         fontSize: '14px',
         fontWeight: 'bold',
-        fontFamily: "Helvetica",
+        fontFamily: "system-ui",
         borderWidth: 0,
         height: 30,
-        width: '145%',
+        width: '143%',
         padding: 6,
     }
 });

@@ -24,21 +24,11 @@ const Login = ({ navigation }) => {
                 await AsyncStorage.setItem('token', authData.data.token)
                 dispatch({type:'logIn', payload: true})
             } else {
-                swal({
-                    title: "Erro!",
-                    text: "Email ou Senha Inválidos.",
-                    icon: "error",
-                    button: "OK",
-                  });
+                alert("Email ou Senha Inválidos.")
                 setPassword('')
             }
         } catch (error) {
-            swal({
-                title: "Erro!",
-                text: "Email ou Senha Inválidos.",
-                icon: "error",
-                button: "OK",
-              });
+            alert("Email ou Senha Inválidos.")
             setPassword('')
         }
     }
@@ -55,12 +45,13 @@ const Login = ({ navigation }) => {
 
             <View style={styles.loginBorda}> 
             <Text style={styles.boasVindas}>
-                Seja bem-vindo(a)!
+                Seja bem-vindo(a)
             </Text>
             <CustomInput
                 placeholder="Email"
                 value={email}
                 setValue={setEmail}
+                style={styles.loginInput}
             />
 
             <CustomInput
@@ -68,9 +59,10 @@ const Login = ({ navigation }) => {
                 value={password}
                 setValue={setPassword}
                 secureTextEntry={true}
+                style={styles.loginInput}
             />
 
-            <CustomButton text="Login" onPress={onLoginPressed} style={styles.Logintext}/>
+            <CustomButton text="Login" onPress={onLoginPressed} style={styles.bottom}/>
 
             <TouchableOpacity
                 onPress={() => navigation.navigate("RegisterUser")}
@@ -100,7 +92,7 @@ const styles = StyleSheet.create({
         maxHeight: 200,
     },
     boasVindas:{
-        fontSize: 15,
+        fontSize: 17,
         fontWeight: 700,
         margin: 30
     },
@@ -122,6 +114,15 @@ const styles = StyleSheet.create({
     loginText: {
         fontWeight: "bold",
         color: "#042624",
+        fontFamily: 'system-ui'
+
+    },
+    loginInput:{
+        width: '179%',
+        fontFamily: 'system-ui'
+    },
+    bottom:{
+        width: '179%'
     }
 
 });

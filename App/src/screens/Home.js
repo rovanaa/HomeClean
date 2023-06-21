@@ -181,10 +181,9 @@ const Home = ({navigation}) => {
                   style={[styles.whatsappIcon, { height: height * 0.3 }]}
                   resizeMode="contain"
                   />
-              </TouchableOpacity>
 
               <View style={styles.containerWhatsapp}>
-              <TouchableOpacity >
+              
                 <Text
                   style={styles.whatsappText}
                   onPress={() => {
@@ -192,8 +191,8 @@ const Home = ({navigation}) => {
                   }}>
                   Tire suas dúvidas por whatsapp
                 </Text>
-                </TouchableOpacity>
             </View>
+                </TouchableOpacity>
         </View>
 
       </View>

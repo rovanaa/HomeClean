@@ -31,6 +31,7 @@ const ServicosAgendamento = ({ navigation }) => {
                 renderItem={({ item }) => {
                     return (
                         <View style={styles.container}>
+
                             <Animatable.View delay={500} animation="bounceInRight">
                             <View style={styles.text}>
                                 <Text style={styles.item}>{item.optServ}</Text>
@@ -66,7 +67,10 @@ const styles = StyleSheet.create({
         margin: 5,
         padding: 10,
         borderRadius: 6,
-        backgroundColor: '#3b8183'
+        backgroundColor: '#3b8183',
+    },
+    text:{
+        width: 370
     },
     item: {
         margin: 5,
